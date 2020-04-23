@@ -206,7 +206,7 @@ export default class Join extends Component {
             type="text"
             placeholder="Inscrição Estadual"
             value={insc_estadual}
-            onChange={this.handleInscEstadualChange}
+            onChange={this.handleInputInscEstadualChange}
           />
           <h3>Número de Telefone</h3>
           <input
@@ -214,7 +214,7 @@ export default class Join extends Component {
             type="text"
             placeholder="Número de Telefone"
             value={tel}
-            onChange={this.handleTelChange}
+            onChange={this.handleInputTelChange}
           />
           <h3>CEP</h3>
           <input
@@ -222,7 +222,7 @@ export default class Join extends Component {
             type="text"
             placeholder="CEP"
             value={cep}
-            onChange={this.handleCepChange}
+            onChange={this.handleInputCepChange}
           />
           <h3>Estado</h3>
           <input
@@ -230,7 +230,7 @@ export default class Join extends Component {
             type="text"
             placeholder="Estado"
             value={estado}
-            onChange={this.handleEstadoChange}
+            onChange={this.handleInputEstadoChange}
           />
           <h3>Bairro</h3>
           <input
@@ -238,7 +238,7 @@ export default class Join extends Component {
             type="text"
             placeholder="Bairro"
             value={bairro}
-            onChange={this.handleBairroChange}
+            onChange={this.handleInputBairroChange}
           />
           <h3>Rua</h3>
           <input
@@ -246,7 +246,7 @@ export default class Join extends Component {
             type="text"
             placeholder="Rua"
             value={rua}
-            onChange={this.handleRuaChange}
+            onChange={this.handleInputRuaChange}
           />
           <h3>Complemento</h3>
           <input
@@ -254,7 +254,7 @@ export default class Join extends Component {
             type="text"
             placeholder="Ex: Apto:01"
             value={complemento}
-            onChange={this.handleComplementoChange}
+            onChange={this.handleInputComplementoChange}
           />
           <h3>Número do estabelecimento</h3>
           <input
