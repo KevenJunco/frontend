@@ -67,11 +67,11 @@ export default class Join extends Component {
   };
 
   handleInputBairroChange = (e) => {
-    this.setState({ password: e.target.value });
+    this.setState({ bairro: e.target.value });
   };
 
   handleInputRuaChange = (e) => {
-    this.setState({ password: e.target.value });
+    this.setState({ rua: e.target.value });
   };
 
   handleInputComplementoChange = (e) => {
@@ -147,9 +147,10 @@ export default class Join extends Component {
 
     return (
       <Container>
-        <h1>Login</h1>
+        <h1>Cadastro de Usuário</h1>
 
         <Form onSubmit={this.handleSubmit}>
+          <h3>Nome do usuário</h3>
           <input
             id="name"
             type="text"
@@ -157,6 +158,7 @@ export default class Join extends Component {
             value={name}
             onChange={this.handleInputNameChange}
           />
+          <h3>Ultimo sobrenome</h3>
           <input
             id="last_name"
             type="text"
@@ -164,13 +166,15 @@ export default class Join extends Component {
             value={last_name}
             onChange={this.handleInputLastNameChange}
           />
+          <h3>Nome da empresa</h3>
           <input
             id="company"
             type="text"
-            placeholder="Insira da sua empresa"
+            placeholder="Insira o nome da sua empresa"
             value={company}
             onChange={this.handleInputCompanyChange}
           />
+          <h3>Email</h3>
           <input
             id="email"
             type="text"
@@ -178,6 +182,7 @@ export default class Join extends Component {
             value={email}
             onChange={this.handleInputEmailChange}
           />
+          <h3>Senha</h3>
           <input
             id="password"
             type="text"
@@ -185,6 +190,7 @@ export default class Join extends Component {
             value={password}
             onChange={this.handleInputPasswordChange}
           />
+          <h3>CNPJ</h3>
           <input
             id="cnpj"
             type="text"
@@ -192,6 +198,9 @@ export default class Join extends Component {
             value={cnpj}
             onChange={this.handleInputCnpjChange}
           />
+          <h3>
+            Inscrição Estadual <small>(se houver)</small>
+          </h3>
           <input
             id="insc_estadual"
             type="text"
@@ -199,6 +208,7 @@ export default class Join extends Component {
             value={insc_estadual}
             onChange={this.handleInscEstadualChange}
           />
+          <h3>Número de Telefone</h3>
           <input
             id="tel"
             type="text"
@@ -206,6 +216,7 @@ export default class Join extends Component {
             value={tel}
             onChange={this.handleTelChange}
           />
+          <h3>CEP</h3>
           <input
             id="cep"
             type="text"
@@ -213,6 +224,7 @@ export default class Join extends Component {
             value={cep}
             onChange={this.handleCepChange}
           />
+          <h3>Estado</h3>
           <input
             id="estado"
             type="text"
@@ -220,6 +232,7 @@ export default class Join extends Component {
             value={estado}
             onChange={this.handleEstadoChange}
           />
+          <h3>Bairro</h3>
           <input
             id="bairro"
             type="text"
@@ -227,6 +240,7 @@ export default class Join extends Component {
             value={bairro}
             onChange={this.handleBairroChange}
           />
+          <h3>Rua</h3>
           <input
             id="rua"
             type="text"
@@ -234,20 +248,15 @@ export default class Join extends Component {
             value={rua}
             onChange={this.handleRuaChange}
           />
-          <input
-            id="bairro"
-            type="text"
-            placeholder="Bairro"
-            value={bairro}
-            onChange={this.handleBairroChange}
-          />
+          <h3>Complemento</h3>
           <input
             id="complemento"
             type="text"
-            placeholder="Complemento"
+            placeholder="Ex: Apto:01"
             value={complemento}
             onChange={this.handleComplementoChange}
           />
+          <h3>Número do estabelecimento</h3>
           <input
             id="num_estabelecimento"
             type="text"

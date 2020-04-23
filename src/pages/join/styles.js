@@ -13,6 +13,7 @@ export const Container = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin-top: 10px;
 
     svg {
       margin-right: 10px;
@@ -40,9 +41,7 @@ export const Form = styled.form`
     padding: 10px 15px;
     border-radius: 4px;
     font-size: 16px;
-  }
-
-  #password {
+    background: #dcdcdc;
     margin-top: 10px;
   }
 `;

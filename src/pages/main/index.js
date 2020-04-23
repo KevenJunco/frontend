@@ -57,7 +57,7 @@ export default class Main extends Component {
 
           <input
             id="password"
-            type="text"
+            type="password"
             placeholder="Senha"
             value={password}
             onChange={this.handleInputPasswordChange}
@@ -74,7 +74,6 @@ export default class Main extends Component {
           <i>
             <Link to="/join">Cadastre-se</Link>
           </i>
-          <p>Cadastre-se</p>
         </Form>
       </Container>
     );
