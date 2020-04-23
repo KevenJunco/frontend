@@ -2,14 +2,14 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import Main from './pages/main';
-import Repository from './pages/repository';
+import Join from './pages/join';
 
 export default function Routes() {
   return (
     <BrowserRouter>
       <Switch>
         <Route path="/" exact component={Main} />
-        <Route path="/repository/:repository" component={Repository} />
+        <Route path="/join" component={Join} />
       </Switch>
     </BrowserRouter>
   );

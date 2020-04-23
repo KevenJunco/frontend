@@ -1,39 +1,25 @@
 import React, { Component } from 'react';
-import { FaGithubAlt, FaPlus, FaSpinner } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { FaPlus, FaSpinner } from 'react-icons/fa';
 
 import api from '../../services/api';
 
 import Container from '../../components/Container';
-import { Form, SubmitButton, List } from './styles';
+import { Form, SubmitButton } from './styles';
 
 export default class Main extends Component {
   state = {
-    newRepo: '',
-    repositories: [],
+    email: '',
+    password: '',
     loading: false,
   };
 
-  // Carregar os dados do LocalStorage
-  componentDidMount() {
-    const repositories = localStorage.getItem('repositories');
+  handleInputEmailChange = (e) => {
+    this.setState({ email: e.target.value });
+  };
 
-    if (repositories) {
-      this.setState({ repositories: JSON.parse(repositories) });
-    }
-  }
-
-  // Salvar os dados do LocalStorage
-  componentDidUpdate(_, prevState) {
-    const { repositories } = this.state;
-
-    if (prevState.repository !== repositories) {
-      localStorage.setItem('repositories', JSON.stringify(repositories));
-    }
-  }
-
-  handleInputChange = (e) => {
-    this.setState({ newRepo: e.target.value });
+  handleInputPasswordChange = (e) => {
+    this.setState({ password: e.target.value });
   };
 
   handleSubmit = async (e) => {
@@ -41,36 +27,40 @@ export default class Main extends Component {
 
     this.setState({ loading: true });
 
-    const { newRepo, repositories } = this.state;
+    const { email, password } = this.state;
 
-    const response = await api.get(`/products`);
+    const response = await api.post('/sessions', {
+      email,
+      password,
+    });
 
-    /* const data = {
-      name: response.data.full_name,
-    };
-    this.setState({
-      repositories: [...repositories, data],
-      newRepo: '',
-      loading: false,
-    }); */
+    this.setState({ loading: false });
+
+    console.log(response.data);
   };
 
   render() {
-    const { newRepo, repositories, loading } = this.state;
+    const { email, password, loading } = this.state;
 
     return (
       <Container>
-        <h1>
-          <FaGithubAlt />
-          Repositórios
-        </h1>
+        <h1>Login</h1>
 
         <Form onSubmit={this.handleSubmit}>
           <input
+            id="email"
             type="text"
-            placeholder="Adicionar repositório"
-            value={newRepo}
-            onChange={this.handleInputChange}
+            placeholder="E-mail"
+            value={email}
+            onChange={this.handleInputEmailChange}
+          />
+
+          <input
+            id="password"
+            type="text"
+            placeholder="Senha"
+            value={password}
+            onChange={this.handleInputPasswordChange}
           />
 
           <SubmitButton loading={loading}>
@@ -80,18 +70,12 @@ export default class Main extends Component {
               <FaPlus color="#FFF" size={14} />
             )}
           </SubmitButton>
-        </Form>
 
-        <List>
-          {repositories.map((repository) => (
-            <li key={repository.name}>
-              <span>{repository.name}</span>
-              <Link to={`/repository/${encodeURIComponent(repository.name)}`}>
-                Detalhes
-              </Link>
-            </li>
-          ))}
-        </List>
+          <i>
+            <Link to="/join">Cadastre-se</Link>
+          </i>
+          <p>Cadastre-se</p>
+        </Form>
       </Container>
     );
   }
