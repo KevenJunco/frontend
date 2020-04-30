@@ -85,26 +85,24 @@ export const SubmitButton = styled.button.attrs((props) => ({
     `}
 `;
 
-export const HeaderImg = styled.header`
-  img {
-    max-height: 180px;
-    width: 100%;
-    display: flex;
-  }
-`;
-
-export const Divlist = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  margin-left: 500px;
-`;
-
-export const ProductList = styled.ul`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  grid-gap: 20px;
-  width: 100%;
+export const List = styled.ul`
   list-style: none;
+  margin-top: 30px;
+
+  li {
+    padding: 15px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  & + li {
+    border-top: 1px solid #eee;
+  }
+
+  a {
+    color: #7159c1;
+    text-decoration: none;
+  }
 `;

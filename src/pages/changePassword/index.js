@@ -1,19 +1,17 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { FaPlus, FaSpinner, FaCartPlus } from 'react-icons/fa';
-
-import projeto1 from '../../assets/projeto1.png';
+import { FaPlus, FaSpinner } from 'react-icons/fa';
 
 import api from '../../services/api';
 
-import Product from '../../components/Product';
 import Container from '../../components/Container';
 import { Form, SubmitButton } from './styles';
 
-export default class Main extends Component {
+export default class password extends Component {
   state = {
     email: '',
     password: '',
+    newPassword: '',
+    confirmPassword: '',
     loading: false,
   };
 
@@ -25,16 +23,25 @@ export default class Main extends Component {
     this.setState({ password: e.target.value });
   };
 
+  handleInputNewPasswordChange = (e) => {
+    this.setState({ password: e.target.value });
+  };
+
+  handleInputConfirmPasswordChange = (e) => {
+    this.setState({ password: e.target.value });
+  };
+
   handleSubmit = async (e) => {
     e.preventDefault();
 
     this.setState({ loading: true });
 
-    const { email, password } = this.state;
+    const { password, newPassword, confirmPassword } = this.state;
 
-    const response = await api.post('/sessions', {
-      email,
+    const response = await api.put('/users', {
       password,
+      newPassword,
+      confirmPassword,
     });
 
     this.setState({ loading: false });
@@ -48,7 +55,7 @@ export default class Main extends Component {
     return (
       <>
         <Container>
-          <h1>Login</h1>
+          <h1>Alterar Senha</h1>
 
           <Form onSubmit={this.handleSubmit}>
             <input
@@ -58,13 +65,26 @@ export default class Main extends Component {
               value={email}
               onChange={this.handleInputEmailChange}
             />
-
             <input
               id="password"
               type="password"
-              placeholder="Senha"
+              placeholder="insira sua senha atual"
               value={password}
               onChange={this.handleInputPasswordChange}
+            />
+            <input
+              id="newPassword"
+              type="password"
+              placeholder="Insira sua nova senha(mínimo 8 caractéres)"
+              value={password}
+              onChange={this.handleInputNewPasswordChange}
+            />
+            <input
+              id="confirmPassword"
+              type="password"
+              placeholder="Confirme a sua nova senha"
+              value={password}
+              onChange={this.handleInputConfirmPasswordChange}
             />
 
             <SubmitButton loading={loading}>
@@ -74,32 +94,8 @@ export default class Main extends Component {
                 <FaPlus color="#FFF" size={14} />
               )}
             </SubmitButton>
-
-            <i>
-              <Link to="/join">Cadastre-se</Link>
-            </i>
           </Form>
         </Container>
-
-        <Product>
-          <a href="/store">
-            <h1>Kaspersky Endpoint Security</h1>
-            <img src={projeto1} alt="kes antivirus" />
-            <p>Saiba mais</p>
-          </a>
-
-          <div>
-            <strong>R$ 00,00</strong>
-
-            <SubmitButton loading={loading}>
-              {loading ? (
-                <FaSpinner color="#FFF" size={35} />
-              ) : (
-                <FaCartPlus color="#FFF" size={35} />
-              )}
-            </SubmitButton>
-          </div>
-        </Product>
       </>
     );
   }

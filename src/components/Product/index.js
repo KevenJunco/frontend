@@ -8,10 +8,10 @@ const Product = styled.div`
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   padding: 30px;
   margin: 80px auto;
-  flex-direction: row;
-  align-items: row;
+  flex-direction: center;
+  align-items: center;
   transition: transform 0.2s;
-
+  justify-content: center;
   &:hover {
     transform: translateX(10px);
   }
@@ -30,31 +30,28 @@ const Product = styled.div`
     width: 150px;
     height: 150px;
   }
-  div {
-    margin: 0 16px;
-    flex: 1;
-    align-items: row;
-    flex-direction: row;
-
-    strong {
-      font-size: 20px;
-      color: #3d3d4d;
-      align-items: row;
-
-      button {
-        align-items: row;
-        flex-direction: row;
-      }
-    }
-    p {
-      font-size: 18px;
-      color: #a8a8b3;
-      margin-top: 4px;
-    }
+  p {
+    font-size: 18px;
+    color: #a8a8b3;
+    margin-top: 4px;
   }
-  svg {
-    margin-left: auto;
-    color: #cbcbd6;
+  div {
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    align-content: space-between;
+    strong {
+      font-size: 33px;
+      color: #3d3d4d;
+      display: flex;
+      align-content: row;
+    }
+    button {
+      flex: 1;
+      display: flex;
+    }
   }
 `;
 

@@ -1,15 +1,19 @@
-import React, { useState, Component } from 'react';
-import { FaPlus, FaSpinner } from 'react-icons/fa';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { FaSpinner, FaCartPlus } from 'react-icons/fa';
 
 import projeto1 from '../../assets/projeto1.png';
+import baner from '../../assets/baner.jpeg';
 
-import api from '../../services/api';
+import Header from '../../components/Header';
+import Product from '../../components/Product';
+import { SubmitButton, HeaderImg, ProductList, Divlist } from './styles';
 
-import Container from '../../components/Container';
-import { Form, SubmitButton, Products } from './styles';
+export default class Store extends Component {
+  state = {
+    loading: false,
+  };
 
-const Dashboard = () => {
-  const products = useState([]);
   handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -17,33 +21,90 @@ const Dashboard = () => {
 
     this.setState({ loading: false });
   };
-};
-const { loading } = this.state;
 
-return (
-  <>
-    <Products>
-      <h1>Kaspersky Endpoint Security</h1>
-      <Form onSubmit={this.handleSubmit}>
-        {products.map((repository) => (
-          <a key="saiba mais" href="teste">
-            <img src={projeto1} alt="kes antivirus" />
-            <div>
-              <strong>R$ 00,00</strong>
-              <p>Saiba mais</p>
-            </div>
-          </a>
-        ))}
-        <SubmitButton loading={loading}>
-          {loading ? (
-            <FaSpinner color="#FFF" size={14} />
-          ) : (
-            <FaPlus color="#FFF" size={14} />
-          )}
-        </SubmitButton>
-      </Form>
-    </Products>
-  </>
-);
+  render() {
+    const { loading } = this.state;
 
-export default Dashboard;
+    return (
+      <>
+        <HeaderImg>
+          <img src={baner} alt="kes antivirus" />
+        </HeaderImg>
+        <Header>
+          <ul>
+            <li>
+              {' '}
+              <Link to="/store/password"> Minha conta</Link>
+            </li>
+            <li> Meus pedidos</li>
+            <li>Produtos</li>
+            <li>Relatorios</li>
+            <li>Sair</li>
+          </ul>
+        </Header>
+        <Divlist>
+          <ProductList>
+            <Product>
+              <a href="/store">
+                <h1>Kaspersky Endpoint Security</h1>
+                <img src={projeto1} alt="kes antivirus" />
+                <p>Saiba mais</p>
+              </a>
+
+              <div>
+                <strong>R$ 00,00</strong>
+
+                <SubmitButton loading={loading}>
+                  {loading ? (
+                    <FaSpinner color="#FFF" size={35} />
+                  ) : (
+                    <FaCartPlus color="#FFF" size={35} />
+                  )}
+                </SubmitButton>
+              </div>
+            </Product>
+
+            <Product>
+              <a href="/store">
+                <h1>Kaspersky Endpoint Security</h1>
+                <img src={projeto1} alt="kes antivirus" />
+                <p>Saiba mais</p>
+              </a>
+
+              <div>
+                <strong>R$ 00,00</strong>
+
+                <SubmitButton loading={loading}>
+                  {loading ? (
+                    <FaSpinner color="#FFF" size={35} />
+                  ) : (
+                    <FaCartPlus color="#FFF" size={35} />
+                  )}
+                </SubmitButton>
+              </div>
+            </Product>
+            <Product>
+              <a href="/store">
+                <h1>Kaspersky Endpoint Security</h1>
+                <img src={projeto1} alt="kes antivirus" />
+                <p>Saiba mais</p>
+              </a>
+
+              <div>
+                <strong>R$ 00,00</strong>
+
+                <SubmitButton loading={loading}>
+                  {loading ? (
+                    <FaSpinner color="#FFF" size={35} />
+                  ) : (
+                    <FaCartPlus color="#FFF" size={35} />
+                  )}
+                </SubmitButton>
+              </div>
+            </Product>
+          </ProductList>
+        </Divlist>
+      </>
+    );
+  }
+}
