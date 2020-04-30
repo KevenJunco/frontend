@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { FaPlus, FaSpinner } from 'react-icons/fa';
+import { FaPlus, FaSpinner, FaCartPlus } from 'react-icons/fa';
+
+import projeto1 from '../../assets/projeto1.png';
 
 import api from '../../services/api';
 
+import Product from '../../components/Product';
 import Container from '../../components/Container';
 import { Form, SubmitButton } from './styles';
 
@@ -43,39 +46,60 @@ export default class Main extends Component {
     const { email, password, loading } = this.state;
 
     return (
-      <Container>
-        <h1>Login</h1>
+      <>
+        <Container>
+          <h1>Login</h1>
 
-        <Form onSubmit={this.handleSubmit}>
-          <input
-            id="email"
-            type="text"
-            placeholder="E-mail"
-            value={email}
-            onChange={this.handleInputEmailChange}
-          />
+          <Form onSubmit={this.handleSubmit}>
+            <input
+              id="email"
+              type="text"
+              placeholder="E-mail"
+              value={email}
+              onChange={this.handleInputEmailChange}
+            />
 
-          <input
-            id="password"
-            type="password"
-            placeholder="Senha"
-            value={password}
-            onChange={this.handleInputPasswordChange}
-          />
+            <input
+              id="password"
+              type="password"
+              placeholder="Senha"
+              value={password}
+              onChange={this.handleInputPasswordChange}
+            />
 
-          <SubmitButton loading={loading}>
-            {loading ? (
-              <FaSpinner color="#FFF" size={14} />
-            ) : (
-              <FaPlus color="#FFF" size={14} />
-            )}
-          </SubmitButton>
+            <SubmitButton loading={loading}>
+              {loading ? (
+                <FaSpinner color="#FFF" size={14} />
+              ) : (
+                <FaPlus color="#FFF" size={14} />
+              )}
+            </SubmitButton>
 
-          <i>
-            <Link to="/join">Cadastre-se</Link>
-          </i>
-        </Form>
-      </Container>
+            <i>
+              <Link to="/join">Cadastre-se</Link>
+            </i>
+          </Form>
+        </Container>
+
+        <Product>
+          <h1>Kaspersky Endpoint Security</h1>
+          <img src={projeto1} alt="kes antivirus" />
+          <p>Saiba mais</p>
+
+          <div>
+            <strong>
+              R$ 00,00
+              <SubmitButton loading={loading}>
+                {loading ? (
+                  <FaSpinner color="#FFF" size={35} />
+                ) : (
+                  <FaCartPlus color="#FFF" size={35} />
+                )}
+              </SubmitButton>
+            </strong>
+          </div>
+        </Product>
+      </>
     );
   }
 }
